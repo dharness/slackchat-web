@@ -15,6 +15,13 @@ class AccountStore {
 		this.id = accountId;
 		const { token, id } = response.data;
 	}
+
+	@action async removeSlackAccount() {
+		const response = await axios.post(`${API_URL}/slack/revoke`, { id: this.id })
+		if (response.status === 200) {
+			this.slack = null;
+		}
+	}
 }
 
 export default new AccountStore();

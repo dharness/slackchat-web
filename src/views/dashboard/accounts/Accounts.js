@@ -3,6 +3,7 @@ import slackLogoUrl from './../../../assets/slacklogo.svg';
 import queryString from 'query-string';
 import { withRouter } from 'react-router';
 import { observer } from 'mobx-react';
+import autobind from 'autobind-decorator';
 
 
 const NoAccounts = (props) => (
@@ -39,7 +40,7 @@ const AccountPreview = (props) => (
         <div className="sc-accounts-preview--label">Channel</div>
         <div className="sc-accounts-preview--text">{props.slackInfo.channel.name}</div>
       </div>
-      <button className="sc-accounts-preview--remove-button">Remove</button>
+      <button onClick={props.onRemoveClicked} className="sc-accounts-preview--remove-button">Remove</button>
     </div>
   </div>
 )
@@ -63,13 +64,18 @@ class Accounts extends Component {
     this.state = { slackHref };
   }
 
+  @autobind
+  onRemoveClicked() {
+    this.props.account.removeSlackAccount(); 
+  }
+
   render () {
     return (
       <div className="sc-accounts-wrapper">
         <div className="sc-accounts-header"> Accounts </div>
         {
           this.props.account.slack ?
-          <AccountPreview slackInfo={this.props.account.slack}/> :
+          <AccountPreview onRemoveClicked={this.onRemoveClicked} slackInfo={this.props.account.slack}/> :
           <NoAccounts slackHref={this.state.slackHref}/>
         }
       </div>

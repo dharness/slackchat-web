@@ -21,10 +21,7 @@ const App = () => (
 ReactDOM.render((
   <Provider account={stores.account}>
     <BrowserRouter>
-      <div>
-        <Route path="/" component={App}>
-        </Route>
-      </div>
+      <Route path="/" component={App}></Route>
     </BrowserRouter>
   </Provider>
 ), document.querySelector('#app'))
