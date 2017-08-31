@@ -51,16 +51,15 @@ class Accounts extends Component {
 
   constructor(props) {
     super(props);
-
     const slackHref = queryString.stringify({
       redirect_uri: 'http://127.0.0.1:9090/api/slack/authorize/',
-      scope: 'incoming-webhook',
+      scope: 'incoming-webhook,commands,bot',
       client_id: '94105311894.149174096865',
       state: JSON.stringify({
         slackchatUserId: this.props.match.params.accountId
       })
     }, { encode: false });
-
+    console.log(slackHref);
     this.state = { slackHref };
   }
 
