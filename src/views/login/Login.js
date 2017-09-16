@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { observer, action } from 'mobx-react';
 import autobind from 'autobind-decorator'
 import { login } from './../../services/auth'
 import { withRouter } from 'react-router'
+import logoUrl from './../../assets/logo.svg'
 
 
 @observer(['account'])
@@ -35,13 +37,18 @@ class Login extends Component {
 
   render () {
     return (
-      <div>
-        <br />
-        <input type="email" onChange={this.handleEmailChange}/>
-        <br />
-        <input type="password" onChange={this.handlePasswordChange}/>
-        <br />
-        <button onClick={this.login.bind(this)}>Submit</button>
+      <div className="sc-auth">
+        <img src={logoUrl} className="sc-auth--logo" />
+        <div className="sc-auth--logo-text">slackchat</div>
+        <input className="sc-auth--input" type="email" onChange={this.handleEmailChange}/>
+        <input className="sc-auth--input" type="password" onChange={this.handlePasswordChange}/>
+        <Link to="auth" className="sc-auth--password-link">Forgot your password?</Link>
+        <button className="sc-auth--button" onClick={this.login.bind(this)}>
+          Login
+        </button>
+        <Link to="auth" className="sc-auth--account-link">
+          Create a Slackchat account!
+        </Link>
       </div>
     )
   }

@@ -18,3 +18,4 @@ import './dashboard/left-nav.css';
 import './dashboard/widget.css';
 import './dashboard/accounts.css';
 import './dashboard/pricing.css';
+import './auth/auth.css';
