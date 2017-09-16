@@ -1,0 +1,85 @@
+.sc-auth {
+  width: 300px;
+  margin: 50px auto 0px auto;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 30px 20px 30px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 1px 10px rgba(28, 35, 118, 0.24);
+}
+
+.sc-auth--logo {
+  width: 90px;
+  margin: auto;
+}
+
+.sc-auth--logo-text {
+  align-self: center;
+  color: var(--blue-2);
+  font-family: Jaapokki, Arial, sans-serif;
+  font-size: 24px;
+  margin: 10px 0px 40px 0px;
+}
+
+.sc-auth--input {
+  padding: 5px;
+  background: none;
+  margin-bottom: 15px;
+  border: solid 1px var(--blue-3);
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  outline: none;
+}
+
+.sc-auth--input:active, .sc-auth--input:focus {
+  border-color: var(--blue-2);
+}
+
+.sc-auth--error-message {
+  margin-bottom: 7px;
+  background: var(--red-1);
+  padding: 5px;
+  color: white;
+  border-radius: 3px;
+  font-family: Jaapokki, Arial, sans-serif;
+  text-align: center;
+}
+
+.sc-auth--button {
+  margin: 30px 0px 15px 0px;
+  padding: 10px;
+  border: none;
+  background: var(--blue-2);
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: Jaapokki, Arial, sans-serif;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.sc-auth--button.disabled {
+  background: var(--blue-3);
+  cursor: default;
+}
+
+.sc-auth--button:active {
+  transform: scale(0.95);
+}
+
+.sc-auth--password-link, .sc-auth--account-link {
+  font-size: 10px;
+  text-decoration: none;
+  color: var(--grey-1);
+}
+
+.sc-auth--password-link:hover, .sc-auth--account-link:hover {
+  color: var(--blue-2);
+}
+
+.sc-auth--account-link {
+  margin: auto;
+}

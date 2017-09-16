@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import slackLogoBlueUrl from './../../assets/slack-logo-blue.svg'
 import slackMockUrl from './../../assets/slackmock.svg'
 
 class Hero extends Component {
   render () {
-    // var href=`https://slack.com/oauth/authorize?redirect_uri=${process.env.SLACK_REDIRECT_URI}&scope=${process.env.SLACK_SCOPES}&client_id=${process.env.SLACK_CLIENT_ID}`;
-
     return (
       <div className="sc-landing-hero">
         <div className="sc-landing-hero--info">
@@ -15,12 +14,12 @@ class Hero extends Component {
             ever leaving <span className="sc-landing-hero--blue-word">Slack</span> <br />
           </div>
           <div className="sc-landing-hero--button-wrapper">
-            <a className="sc-landing-hero--button" href='<%= href %>'>
+            <Link className="sc-landing-hero--button" to='/auth'>
               <img src={slackLogoBlueUrl} alt="" />
               <div className="sc-landing-hero--button-text">
                 Get Slackchat free!
               </div>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="sc-landing-hero--img">
