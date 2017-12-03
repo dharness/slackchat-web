@@ -7,12 +7,14 @@ const API_URL = 'http://localhost:9090/api'
 class AccountStore {
 	@observable authToken = '';
 	@observable id = '';
+	@observable since = '';
 	@observable slack = null;
 
 	@action async fetch(accountId) {
 		const response = await axios.get(`${API_URL}/account/${accountId}`)
 		this.slack = response.data.slack;
 		this.id = accountId;
+		this.since = response.data.createdAt;
 		const { token, id } = response.data;
 	}
 

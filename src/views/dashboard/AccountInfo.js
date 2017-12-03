@@ -2,6 +2,15 @@ import React, { Component } from 'react'
 import userUrl from './../../assets/user.svg'
 
 class AccountInfo extends Component {
+
+  getFormattedSince() {
+    if (this.props.since) {
+      const since = new Date(this.props.since)
+      return `${since.toLocaleString('en-us', { month: "long" })} ${since.getFullYear()}`
+    }
+    return ''
+  }
+
   render () {
     return (
       <div className="sc-info-nav">
@@ -13,7 +22,7 @@ class AccountInfo extends Component {
             </div>
           </div>
           <span className="sc-info-since">Since: <span className="sc-info-since--value">
-            {/* {`${created_at.toLocaleString('en-us', { month: "long" })} ${created_at.getFullYear()}`} */}
+            {this.getFormattedSince()}
           </span></span>
           <span className="sc-info-domain">Domain: <span className="sc-info-domain--value">kingofthestack.com</span></span>
         </div>
