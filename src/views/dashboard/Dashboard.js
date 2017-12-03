@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import LeftNav from './LeftNav'
 import Header from './Header'
 import AccountInfo from './AccountInfo'
-import Chart from './analytics/Chart'
+import AnalyticsChart from './analytics/AnalyticsChart'
 import Widget from './widget/Widget'
 import Accounts from './accounts/Accounts'
 import Payments from './payments/Payments'
@@ -27,7 +27,7 @@ class componentName extends Component {
         <div className="sc-horz-divider"></div>
         <div className="sc-dashboard-content">
           <LeftNav accountId={this.props.account.id} />
-          <Route path='/:accountId/dashboard/analytics' component={Chart}/>
+          <Route path='/:accountId/dashboard/analytics' component={AnalyticsChart}/>
           <Route path='/:accountId/dashboard/widget' component={Widget}/>
           <Route path='/:accountId/dashboard/accounts' component={Accounts}/>
           <Route path='/:accountId/dashboard/payments' component={Payments}/>
