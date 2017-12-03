@@ -6,7 +6,6 @@ import moment from 'moment'
 class AnalyticsChart extends Component {
 
   componentDidMount() {
-    console.log(this.canvas)
     var ctx = this.canvas.getContext("2d");
     var scatterChart = new Chart(ctx, {
         type: 'line',

@@ -18,7 +18,7 @@ class AccountInfo extends Component {
           <div className="sc-info-company">
             <img src={userUrl} alt="" />
             <div className="sc-info-company--text">
-              {"<%- team_name %>"}
+              {this.props.slack ? this.props.slack.team.name : ''}
             </div>
           </div>
           <span className="sc-info-since">Since: <span className="sc-info-since--value">
