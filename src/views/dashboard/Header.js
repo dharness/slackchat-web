@@ -1,9 +1,25 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router';
 import logoUrl from './../../assets/logo.svg'
 import userUrl from './../../assets/user.svg'
+import autobind from 'autobind-decorator';
+
 
 class Header extends Component {
+
+  @autobind
+  goToRoute(to) {
+    return () => {
+      window.focus();
+      if (document.activeElement) {
+        document.activeElement.blur();
+      }
+      this.props.history.push(to);
+    }
+  }
+
   render () {
+    const { accountId } = this.props.match.params;
     return (
       <div className="sc-dashboard-header">
       <div className="sc-dashboard-header--brand">
@@ -28,14 +44,20 @@ class Header extends Component {
             </div>
           </div>
           <div className="sc-horz-divider"></div>
-          <a className="sc-dashboard-dropdown-item link" data-route="/<%= team_id %>/dashboard/settings" >
-            Settings
+          <a
+            className="sc-dashboard-dropdown-item link"
+            onClick={this.goToRoute(`/${accountId}/dashboard/settings`)}>
+              Settings
           </a>
-          <a className="sc-dashboard-dropdown-item link" data-route="/<%= team_id %>/dashboard/settings" >
-            Upgrade Account
+          <a
+            className="sc-dashboard-dropdown-item link"
+            onClick={this.goToRoute(`/${accountId}/dashboard/payments`)}>
+              Upgrade Account
           </a>
-          <a className="sc-dashboard-dropdown-item link" data-route="/auth/signout">
-            Logout
+          <a
+            className="sc-dashboard-dropdown-item link"
+            onClick={this.goToRoute('/')}>
+              Logout
           </a>
         </div>
       </button>
@@ -44,4 +66,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default withRouter(Header)

@@ -59,7 +59,6 @@ class Accounts extends Component {
         slackchatUserId: this.props.match.params.accountId
       })
     }, { encode: false });
-    console.log(slackHref);
     this.state = { slackHref };
   }
 
