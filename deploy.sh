@@ -1,0 +1,1 @@
+scp -r ./dist/ root@slackchat.io:/usr/src/app/slackchat
