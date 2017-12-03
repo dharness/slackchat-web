@@ -12,3 +12,15 @@ export const login = async ({ email, password }) => {
     }
   }
 }
+
+export const signup = async ({ email, password }) => {
+  try {
+    const response = await axios.post(`${API_URL}/auth/signup`, { email, password })
+    const { token, id } = response.data;
+    return { token, id };
+  } catch ({ response }) {
+    return {
+      error: { text: 'Account could not be created' }
+    }
+  }
+}
