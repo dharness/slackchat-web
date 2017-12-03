@@ -23,7 +23,7 @@ class componentName extends Component {
       <div className="sc-container">
         <Header />
         <div className="sc-horz-divider"></div>
-        <AccountInfo />
+        <AccountInfo {...this.props.account}/>
         <div className="sc-horz-divider"></div>
         <div className="sc-dashboard-content">
           <LeftNav accountId={this.props.account.id} />
