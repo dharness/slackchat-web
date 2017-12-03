@@ -88,7 +88,7 @@ class Login extends Component {
           { this.isSignup() ? "Signup" : "Login"}
         </button>
         <Link
-          to={`auth${this.isSignup ? '' : '?signup'}`}
+          to={`auth${this.isSignup() ? '' : '?signup'}`}
           className="sc-auth--account-link">
         { this.isSignup() ? "Already have an account?" : "Create a Slackchat account!"}
         </Link>
