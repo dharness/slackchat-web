@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { observer, action } from 'mobx-react';
 import autobind from 'autobind-decorator'
-import { login } from './../../services/auth'
+import { login, signup } from './../../services/auth'
 import { withRouter } from 'react-router'
 import logoUrl from './../../assets/logo.svg'
 
@@ -27,10 +27,12 @@ class Login extends Component {
       Sincerely,
       A forgetful user
     `;
+    this.isSignup = this.isSignup.bind(this)
   }
 
-  async login() {
-    const { token, id, email, error } = await login(this.state);
+  async loginOrSignup() {
+    const loginOrSignup = this.isSignup() ? signup : login;
+    const { token, id, email, error } = await loginOrSignup(this.state);
     if(error) {
       this.setState({ errorMessage: error.text })
     } else {
@@ -49,6 +51,11 @@ class Login extends Component {
   handlePasswordChange(event) {
     this.setState({ password: event.target.value, errorMessage: '' });
   }
+  
+  @autobind
+  isSignup() {
+    return (new URLSearchParams(this.props.location.search)).get('signup') !== null;
+  }
 
   render () {
     const canSubmit = this.state.email.length > 0 &&
@@ -66,20 +73,24 @@ class Login extends Component {
 
         <input className="sc-auth--input" type="email" onChange={this.handleEmailChange}/>
         <input className="sc-auth--input" type="password" onChange={this.handlePasswordChange}/>
-        <Link
-          to={`mailto:hello@kingofthestack.com?subject=Forgot Password&body=${encodeURI(this.emailTemplate)}`}
+        {!this.isSignup()  && 
+          <a
+          href={`mailto:hello@kingofthestack.com?subject=Forgot Password&body=${encodeURI(this.emailTemplate)}`}
           className="sc-auth--password-link">
-            Forgot your password?
-        </Link>
+              Forgot your password?
+          </a>
+        }
         <button
           className={"sc-auth--button" + (canSubmit ? "" : " disabled")}
-          onClick={this.login.bind(this)}
+          onClick={this.loginOrSignup.bind(this)}
           disabled={!canSubmit}
         >
-          Login
+          { this.isSignup() ? "Signup" : "Login"}
         </button>
-        <Link to="auth" className="sc-auth--account-link">
-          Create a Slackchat account!
+        <Link
+          to={`auth${this.isSignup ? '' : '?signup'}`}
+          className="sc-auth--account-link">
+        { this.isSignup() ? "Already have an account?" : "Create a Slackchat account!"}
         </Link>
       </div>
     )

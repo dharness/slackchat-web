@@ -14,7 +14,7 @@ class Hero extends Component {
             ever leaving <span className="sc-landing-hero--blue-word">Slack</span> <br />
           </div>
           <div className="sc-landing-hero--button-wrapper">
-            <Link className="sc-landing-hero--button" to='/auth'>
+            <Link className="sc-landing-hero--button" to='/auth?signup'>
               <img src={slackLogoBlueUrl} alt="" />
               <div className="sc-landing-hero--button-text">
                 Get Slackchat free!
