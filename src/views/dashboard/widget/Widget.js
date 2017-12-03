@@ -13,7 +13,7 @@ class Widget extends Component {
           </div>
         </div>
         <textarea className="sc-widget-input" id="sc-copy-script-input">
-          <script src="https://slackchat.io/api/embed/<%- team_id %>"></script>
+          {`<script src="https://slackchat.io/api/embed/<%- team_id %>"></script>`}
         </textarea>
       </div>
     )
