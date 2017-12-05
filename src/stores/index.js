@@ -1,7 +1,9 @@
 import account from './AccountStore'
+import analytics from './AnalyticsStore'
 
 const stores = {
-  account
+  account,
+  analytics
 };
 
 export default stores

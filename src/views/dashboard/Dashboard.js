@@ -11,11 +11,12 @@ import { Route } from 'react-router-dom'
 import { observer } from 'mobx-react';
 
 
-@observer(['account'])
+@observer(['analytics', 'account'])
 class componentName extends Component {
 
-  componentDidMount() {
-    this.props.account.fetch(this.props.match.params.accountId);
+  async componentDidMount() {
+    await this.props.account.fetch(this.props.match.params.accountId);
+    await this.props.analytics.fetch(this.props.account.slack.team.id);
   }
 
   render () {

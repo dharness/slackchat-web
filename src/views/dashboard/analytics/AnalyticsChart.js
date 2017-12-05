@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Chart } from 'chart.js'
 import moment from 'moment'
+import { observer } from 'mobx-react';
 
 
+@observer(['analytics'])
 class AnalyticsChart extends Component {
 
   componentDidMount() {
@@ -80,6 +82,10 @@ class AnalyticsChart extends Component {
           }
         }
     });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.analytics.allChats)
   }
 
   render () {

@@ -19,7 +19,7 @@ const App = () => (
 )
 
 ReactDOM.render((
-  <Provider account={stores.account}>
+  <Provider account={stores.account} analytics={stores.analytics}>
     <BrowserRouter>
       <Route path="/" component={App}></Route>
     </BrowserRouter>
