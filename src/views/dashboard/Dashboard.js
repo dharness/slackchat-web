@@ -8,11 +8,12 @@ import Accounts from './accounts/Accounts'
 import Payments from './payments/Payments'
 import { withRouter } from 'react-router'
 import { Route } from 'react-router-dom'
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 
 
-@observer(['account'])
-class componentName extends Component {
+@inject('account')
+@observer
+class Dashboard extends Component {
 
   componentDidMount() {
     this.props.account.fetch(this.props.match.params.accountId);
@@ -37,4 +38,4 @@ class componentName extends Component {
   }
 }
 
-export default withRouter(componentName)
+export default withRouter(Dashboard)

@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { observer, action } from 'mobx-react';
+import { inject, observer, action } from 'mobx-react';
 import autobind from 'autobind-decorator'
 import { login, signup } from './../../services/auth'
 import { withRouter } from 'react-router'
 import logoUrl from './../../assets/logo.svg'
 
 
-@observer(['account'])
+@inject('account')
+@observer
 class Login extends Component {
 
   constructor() {
