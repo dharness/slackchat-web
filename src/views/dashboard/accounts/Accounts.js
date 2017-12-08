@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import slackLogoUrl from './../../../assets/slacklogo.svg';
 import queryString from 'query-string';
 import { withRouter } from 'react-router';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import autobind from 'autobind-decorator';
 
 
@@ -46,7 +46,8 @@ const AccountPreview = (props) => (
 )
 
 
-@observer(['account'])
+@inject('account')
+@observer
 class Accounts extends Component {
 
   constructor(props) {
